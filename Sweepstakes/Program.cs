@@ -18,7 +18,9 @@ namespace Sweepstakes
             marketingFirm.StartSweepstakes();
             marketingFirm.EndSweepstakes();
             
-            // sendgrid api
+            Console.ReadLine();
+
+            
 
         }
     }

@@ -5,3 +5,9 @@ C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debu
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\Sweepstakes.pdb
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\obj\Debug\Sweepstakes.exe
 C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\obj\Debug\Sweepstakes.pdb
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\MailKit.dll
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\MimeKit.dll
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\MailKit.xml
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\bin\Debug\MimeKit.xml
+C:\Users\hlhuynh14\Desktop\devCodeCamp Projects\SweepStakes\Sweepstakes\obj\Debug\Sweepstakes.csproj.CopyComplete

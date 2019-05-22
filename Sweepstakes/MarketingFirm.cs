@@ -77,15 +77,16 @@ namespace Sweepstakes
                 Sweepstakes sweepstakes = sweepstakesManager.GetSweepstakes();
                 string winner = sweepstakes.PickWinner();
                 UserInterface.DisplayWinners(sweepstakes.name, winner);
+                NotifyContestants(sweepstakes);
                 
             }
             
         }
-        public void NotifyContestants()
+        public void NotifyContestants(Sweepstakes sweepstakes)
         {
             for (int i = 0; i < howManySweepstakes; i++)
             {
-                Sweepstakes sweepstakes = sweepstakesManager.GetSweepstakes();
+                
                 sweepstakes.NotifyEachPerson();
 
             }

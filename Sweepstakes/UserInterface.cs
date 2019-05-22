@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
+using MailKit;
+using MimeKit;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+
 
 namespace Sweepstakes
 {
@@ -91,17 +94,48 @@ namespace Sweepstakes
         }
         public static void NotifyWinner(Contestant contestant)
         {
-            SmtpClient s = new SmtpClient();
-             s.Send("MarketingFirm", contestant.email,"Congratulations", $"Congratulations {contestant.firstName}, you are the father.");
-            
+            MimeMessage message = new MimeMessage();
+            message.From.Add(new MailboxAddress("hlhuynh14@gmail.com"));
+            message.To.Add(new MailboxAddress(contestant.email));
+            message.Subject = "Winner, Winner, chicken dinner";
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Congratulations, you are the father."
+            };
+            using (SmtpClient client = new SmtpClient())
+            {
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.Connect("smtp.gmail.com", 465, true);
+                client.Authenticate("noobinaaaaa@gmail.com", "HeyHeyHey555$$$");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            Console.WriteLine("MessageSent");
         }
         public static void NotifyLoser(Contestant contestant)
         {
-            SmtpClient s = new SmtpClient();
-            s.Send("MarketingFirm", contestant.email, "Sorry", $"Sorry{contestant.firstName}, you are not the father.");
+            MimeMessage message = new MimeMessage();
+            message.From.Add(new MailboxAddress("hlhuynh14@gmail.com"));
+            message.To.Add(new MailboxAddress(contestant.email));
+            message.Subject = "Hey Loser";
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Sorry, you are not the father."
+            };
+            using (SmtpClient client = new SmtpClient())
+            {
+                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.Connect("smtp.gmail.com", 465, true);
+                client.Authenticate("noobinaaaaa@gmail.com", "HeyHeyHey555$$$");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            Console.WriteLine("MessageSent");
         }
-
-
     }
+        
+
+
+    
 }
 
