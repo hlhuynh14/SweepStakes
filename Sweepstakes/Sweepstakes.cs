@@ -9,34 +9,37 @@ namespace Sweepstakes
    public class Sweepstakes
     {   // member variables (HAS A)
         
-        Dictionary<int, Contestant> sweepstakesDict;
-        Random rand;
-        Contestant winner1;
-        string name;
+        Dictionary<int, Contestant> contestantDictionary;
+        Random random;
+        int winner;
+       public string name;
+       public int givenID;
+        
         // constructor
         public Sweepstakes(string name)
         {
             
-            rand = new Random();
+            random = new Random();
             this.name = name;
-            sweepstakesDict = new Dictionary<int, Contestant>();
+            contestantDictionary = new Dictionary<int, Contestant>();
             
         }
         // member methods (CAND DO)
         public void RegisterContestant(Contestant contestant)
         {
-            sweepstakesDict.Add(contestant.registrationNumber, contestant);          
+            contestantDictionary.Add(contestant.registrationNumber, contestant);
+            givenID++;
         }
         public string PickWinner()
         {
             string winnerName = "";
-           int winner = rand.Next(sweepstakesDict.Count);
-            foreach(KeyValuePair<int, Contestant> entry in sweepstakesDict)
+           int winnerRegistrationNumber = random.Next(contestantDictionary.Count + 1);
+            foreach(KeyValuePair<int, Contestant> entry in contestantDictionary)
             {
-                if (winner == entry.Key)
+                if (winnerRegistrationNumber == entry.Key)
                 {
                      winnerName += entry.Value.firstName + " " + entry.Value.lastName;
-                    winner1 = entry.Value;
+                    winner = entry.Key;
                 }
             }
             return winnerName;
@@ -45,6 +48,20 @@ namespace Sweepstakes
         public void PrintContestantInfo(Contestant contestant)
         {
             UserInterface.DisplayConstestantInfo(contestant);   
+        }
+        public void NotifyEachPerson()
+        {
+            foreach (KeyValuePair<int, Contestant> entry in contestantDictionary)
+            {
+                if (winner == entry.Key)
+                {
+                    UserInterface.NotifyWinner(entry.Value);
+                }
+                else
+                {
+                    UserInterface.NotifyLoser( entry.Value);
+                }
+            }
         }
     }
    
