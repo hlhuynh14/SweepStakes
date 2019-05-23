@@ -13,25 +13,30 @@ namespace Sweepstakes
      public ISweepstakesManager DetermineManager(string answer)
      {
             ISweepstakesManager sweepstakesManager;
-            if (answer == "stack")
+            switch (answer)
             {
-                SweepstakesStackManager sweepstakesStackManager = new SweepstakesStackManager();
-                sweepstakesManager = sweepstakesStackManager;
-                
-            }
-            else if (answer == "queue")
-            {
-                SweepstakesQueueManager sweepstakesQueueManager = new SweepstakesQueueManager();
-                sweepstakesManager = sweepstakesQueueManager;
-            }
-            else
-            {
-                UserInterface.DisplayWrongInput();
-                string tryagain = UserInterface.AskQueueOrStack();
-              sweepstakesManager = DetermineManager(tryagain);
+                case "stack":
+                    SweepstakesStackManager sweepstakesStackManager = new SweepstakesStackManager();
+                    sweepstakesManager = sweepstakesStackManager;
+                    break;
+
+
+                case "queue":
+
+                    SweepstakesQueueManager sweepstakesQueueManager = new SweepstakesQueueManager();
+                    sweepstakesManager = sweepstakesQueueManager;
+                    break;
+
+
+                default:
+
+                        UserInterface.DisplayWrongInput();
+                    string tryagain = UserInterface.AskQueueOrStack();
+                    sweepstakesManager = DetermineManager(tryagain);
+                    break;
             }
 
             return sweepstakesManager;
-        }
+     }
     }
 }

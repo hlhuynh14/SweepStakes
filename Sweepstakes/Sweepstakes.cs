@@ -33,7 +33,7 @@ namespace Sweepstakes
         public string PickWinner()
         {
             string winnerName = "";
-           int winnerRegistrationNumber = random.Next(givenID);
+           int winnerRegistrationNumber = random.Next(givenID + 1);
             foreach(KeyValuePair<int, Contestant> entry in contestantDictionary)
             {
                 if (winnerRegistrationNumber == entry.Key)
